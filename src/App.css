@@ -1,36 +1,81 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+}
+.app {
+  width: 90vw;
+  height: 90vh;
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-rows: 2rem 1fr;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.transaction-list {
+  list-style: none;
+  border: 1px solid #111;
+  padding: 0.5rem;
+  height: calc(90vh - 6rem);
+  overflow: auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.transaction-item {
+  margin: 0.5rem;
+  border: 1px solid #111;
+  padding: 0.5rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+form {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 1fr auto;
+  position: relative;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+input {
+  padding: 0 0.5rem;
+}
+
+.btn {
+  padding: 0.5rem;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  min-width: 2.5rem;
+}
+
+.empty {
+  width: 100%;
+  height: 100%;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.error {
+  color: red;
+  font-size: 0.8rem;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  margin-top: 0.5rem;
 }
 
-.App-link {
-  color: #61dafb;
+.spinner {
+  width: 0.6rem;
+  height: 0.6rem;
+  border: 2px solid aqua;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 0.5s linear infinite;
 }
 
-@keyframes App-logo-spin {
+@keyframes spin {
   from {
-    transform: rotate(0deg);
+    transform: rotate(0);
   }
   to {
     transform: rotate(360deg);

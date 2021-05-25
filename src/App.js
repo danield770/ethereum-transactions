@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import AddAddress from './Components/AddAddress';
+import TransactionList from './Components/TransactionList';
+
+import useFetch from './hooks/useFetch';
 
 function App() {
+  function fetchData(url) {
+    setUrl(url);
+  }
+  const [url, setUrl] = useState('');
+  const { data, isLoading } = useFetch(url);
+
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>
-          Edit <code>src/App.js</code> and save to reload Hi there.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='app'>
+      <AddAddress fetchData={fetchData} isLoading={isLoading} />
+      <TransactionList data={data?.result} />
     </div>
   );
 }
