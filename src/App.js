@@ -15,7 +15,7 @@ function App() {
   return (
     <div className='app'>
       <AddAddress fetchData={fetchData} isLoading={isLoading} />
-      <TransactionList data={data?.result} />
+      <TransactionList data={data?.result} address={url.slice(-42)} />
     </div>
   );
 }

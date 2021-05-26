@@ -1,10 +1,11 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
+const isDev = require('electron-is-dev');
 
 function createWindow() {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
+  let mainWindow = new BrowserWindow({
     width: 900,
     height: 600,
     webPreferences: {
@@ -12,8 +13,15 @@ function createWindow() {
     },
   });
 
+  const startURL = isDev
+    ? 'http://localhost:3000'
+    : `file://${path.join(__dirname, '../build/index.html')}`;
+  //const startURL = `file://${path.join(__dirname, './build/index.html')}`;
+
   // and load the index.html of the app.
-  mainWindow.loadURL('http://localhost:3000');
+  // mainWindow.loadURL('http://localhost:3000');
+  mainWindow.loadURL(startURL);
+  mainWindow.on('closed', () => (mainWindow = null));
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()

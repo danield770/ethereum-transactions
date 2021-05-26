@@ -13,7 +13,7 @@ function AddAddress({ fetchData, isLoading }) {
     if (isAddress(str)) {
       setErrorMsg('');
     } else {
-      setErrorMsg('error: please enter a valid address');
+      setErrorMsg('error: please enter a valid ethereum address');
     }
   }
 
@@ -24,8 +24,6 @@ function AddAddress({ fetchData, isLoading }) {
 
   function handleChange(e) {
     setFormValue(e.target.value);
-    console.log('e.target.value', e.target.value);
-    console.log('formValue', formValue);
     validateAddress(e.target.value);
   }
 
